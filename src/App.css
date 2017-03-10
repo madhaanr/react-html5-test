@@ -1,0 +1,28 @@
+.App-header {
+  background-color:	#A9A9A9;
+  height: 64px;
+  padding: 32px 0 0 32px;
+  color: white;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.App-logo {
+  vertical-align: center;
+  float: left;
+  height: 32px;
+  width: 32px;
+}
+
+.App-list-body{
+  width: 912px;
+  margin: 0 0 0 32px;
+}
+
+.App-list-body-title {
+  height: 24px;
+  font-size: 24px;
+  color: #505050;
+  padding: 32px 0 16px 0;
+}
+
