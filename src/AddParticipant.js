@@ -15,7 +15,11 @@ class AddParticipant extends Component {
   }
   addParticipant(event) {
     event.preventDefault()
-    this.props.addParticipant(this.state.name,this.state.email,this.state.phone)
+    this.props.addParticipant({id:"asdfsf2",
+                               name:this.state.name,
+                               email:this.state.email,
+                               phone:this.state.phone
+                              })
     this.setState({ name: '', email: '', phone: '' })
   }
   render() {

@@ -7,32 +7,57 @@ class ParticipantList extends Component {
     super(props)
     this.addParticipant = this.addParticipant.bind(this)
     this.removeParticipant = this.removeParticipant.bind(this)
+    this.toggleEditing = this.toggleEditing.bind(this)
+    this.cancelEditing = this.cancelEditing.bind(this)
+    this.updateParticipant = this.updateParticipant.bind(this)
     this.state = {
       participants: [
-        { name: "Meet", email: "meet@a.com", phone: "050-7654327" },
-        { name: "Euvu", email: "euvu@a.com", phone: "050-9889444" },
-        { name: "Mers", email: "mers@a.com", phone: "050-1234567" },
-        { name: "Emsa", email: "emsa@a.com", phone: "050-1239567" }
-      ]
+        { id: "12sfs", name: "Meet", email: "meet@a.com", phone: "050-7654327" },
+        { id: "12sf3", name: "Euvu", email: "euvu@a.com", phone: "050-9889444" },
+        { id: "12sf2", name: "Mers", email: "mers@a.com", phone: "050-1234567" },
+        { id: "12fgs", name: "Emsa", email: "emsa@a.com", phone: "050-1239567" }
+      ],
+      editing: ''
     }
   }
   renderParticipants() {
-    return this.state.participants.map((obj, i) => (
-      <Participant
-        key={i}
-        name={obj.name}
-        email={obj.email}
-        phone={obj.phone}
-        updateParticipant={this.updateParticipant}
-        removeParticipant={this.removeParticipant}
-      />
-    ))
-  }
-  addParticipant(name, email, phone) {
-    this.setState({
-      participants: [...this.state.participants, { name: name, email: email, phone: phone }]
+    return this.state.participants.map((obj) => {
+      if (this.state.editing === obj.id) {
+        return <Participant
+          key={obj.id}
+          id={obj.id}
+          name={obj.name}
+          email={obj.email}
+          phone={obj.phone}
+          editing={this.state.editing}
+          cancelEditing={this.cancelEditing}
+          updateParticipant={this.updateParticipant}
+        />
+      } else {
+        return <Participant
+          key={obj.id}
+          id={obj.id}
+          name={obj.name}
+          email={obj.email}
+          phone={obj.phone}
+          toggleEditing={this.toggleEditing}
+          removeParticipant={this.removeParticipant}
+        />
+      }
     })
-    console.log(this.state.participants)
+  }
+  cancelEditing() {
+    this.setState({ editing: '' })
+  }
+
+  toggleEditing(id) {
+    this.setState({ editing: id })
+  }
+
+  addParticipant(participant) {
+    this.setState({
+      participants: [...this.state.participants, participant]
+    })
   }
 
   removeParticipant(removeName) {
@@ -42,8 +67,13 @@ class ParticipantList extends Component {
     this.setState({ participants: filtered })
   }
 
-  updateParticipant(name, email, phone) {
-
+  updateParticipant(participant) {
+    const participants = this.state.participants
+    var index = participants.findIndex(obj => {
+      return obj.id === participant.id
+    })
+    participants[index] = participant
+    this.setState({ participants: participants, editing: '' })
   }
 
   render() {
