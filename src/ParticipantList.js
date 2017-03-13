@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Table, Column, Cell } from 'fixed-data-table'
+
 import Participant from './Participant'
 import AddParticipant from './AddParticipant'
 
@@ -12,10 +14,10 @@ class ParticipantList extends Component {
     this.updateParticipant = this.updateParticipant.bind(this)
     this.state = {
       participants: [
-        { id: "12sfs", name: "Meet", email: "meet@a.com", phone: "050-7654327" },
-        { id: "12sf3", name: "Euvu", email: "euvu@a.com", phone: "050-9889444" },
-        { id: "12sf2", name: "Mers", email: "mers@a.com", phone: "050-1234567" },
-        { id: "12fgs", name: "Emsa", email: "emsa@a.com", phone: "050-1239567" }
+        { id: "12sfs", name: "Meet", email: "meet@a.com", phone: "0507654327" },
+        { id: "12sf3", name: "Euvu", email: "euvu@a.com", phone: "0509889444" },
+        { id: "12sf2", name: "Mers", email: "mers@a.com", phone: "0501234567" },
+        { id: "12fgs", name: "Emsa", email: "emsa@a.com", phone: "0501239567" }
       ],
       editing: ''
     }
@@ -23,18 +25,21 @@ class ParticipantList extends Component {
   renderParticipants() {
     return this.state.participants.map((obj) => {
       if (this.state.editing === obj.id) {
-        return <Participant
-          key={obj.id}
-          id={obj.id}
-          name={obj.name}
-          email={obj.email}
-          phone={obj.phone}
-          editing={this.state.editing}
-          cancelEditing={this.cancelEditing}
-          updateParticipant={this.updateParticipant}
-        />
-      } else {
-        return <Participant
+        return (
+          <Participant
+            key={obj.id}
+            id={obj.id}
+            name={obj.name}
+            email={obj.email}
+            phone={obj.phone}
+            editing={this.state.editing}
+            cancelEditing={this.cancelEditing}
+            updateParticipant={this.updateParticipant}
+          />
+        )
+      }
+      return (
+        <Participant
           key={obj.id}
           id={obj.id}
           name={obj.name}
@@ -43,7 +48,7 @@ class ParticipantList extends Component {
           toggleEditing={this.toggleEditing}
           removeParticipant={this.removeParticipant}
         />
-      }
+      )
     })
   }
   cancelEditing() {
@@ -60,9 +65,9 @@ class ParticipantList extends Component {
     })
   }
 
-  removeParticipant(removeName) {
+  removeParticipant(id) {
     const filtered = this.state.participants.filter(obj => {
-      return obj.name !== removeName
+      return obj.id !== id
     })
     this.setState({ participants: filtered })
   }
@@ -76,7 +81,7 @@ class ParticipantList extends Component {
     this.setState({ participants: participants, editing: '' })
   }
 
-  render() {
+ render() {
     return (
       <div>
         <div className="AddParticipant">

@@ -3,9 +3,12 @@ import React, { Component } from 'react'
 class AddParticipant extends Component {
   constructor(props) {
     super(props)
-    this.state = { name: '', email: '', phone: '' }
     this.handleChange = this.handleChange.bind(this)
     this.addParticipant = this.addParticipant.bind(this)
+    this.state = { name: '', email: '', phone: '', isEnabled: false }
+  }
+  static propTypes = {
+    addParticipant: React.PropTypes.func.isRequired
   }
   handleChange(event) {
     event.preventDefault()
@@ -15,12 +18,17 @@ class AddParticipant extends Component {
   }
   addParticipant(event) {
     event.preventDefault()
-    this.props.addParticipant({id:"asdfsf2",
-                               name:this.state.name,
-                               email:this.state.email,
-                               phone:this.state.phone
-                              })
-    this.setState({ name: '', email: '', phone: '' })
+    this.props.addParticipant({
+      id: this.randomId(),
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone
+    })
+    this.setState({ name: '', email: '', phone: ''})
+  }
+  
+  randomId() {
+    return "e" + Math.random().toString(36).substr(2, 10)
   }
   render() {
     return (
@@ -29,25 +37,28 @@ class AddParticipant extends Component {
           <input
             type="text"
             name="name"
-            placeholder="name"
+            placeholder="Full name"
             onChange={this.handleChange}
             value={this.state.name}
+            required
           />
           <input
-            type="text"
+            type="email"
             name="email"
-            placeholder="email"
+            placeholder="E-mail address"
             onChange={this.handleChange}
             value={this.state.email}
+            required
           />
           <input
-            type="text"
+            type="tel"
             name="phone"
-            placeholder="phone"
+            placeholder="Phone number"
             onChange={this.handleChange}
             value={this.state.phone}
+            required
           />
-          <input type="submit" value="Add" />
+          <input type="submit" value="Add new" />
         </form>
       </div>
     )

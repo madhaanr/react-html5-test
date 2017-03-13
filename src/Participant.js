@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import './Participant.css'
 
 class Participant extends Component {
@@ -14,8 +15,19 @@ class Participant extends Component {
     this.updateParticipant = this.updateParticipant.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+  static propTypes = {
+    id: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    email: React.PropTypes.string.isRequired,
+    phone: React.PropTypes.string.isRequired,
+    editing: React.PropTypes.string,
+    updateParticipant: React.PropTypes.func,
+    removeParticipant: React.PropTypes.func,
+    toggleEditing: React.PropTypes.func,
+    cancelEditing: React.PropTypes.func
+  }
   removeParticipant() {
-    this.props.removeParticipant(this.props.name)
+    this.props.removeParticipant(this.props.id)
   }
   updateParticipant() {
     event.preventDefault()
@@ -37,14 +49,12 @@ class Participant extends Component {
     event.preventDefault()
     const change = {}
     change[event.target.name] = event.target.value
-    console.log(change, this.state)
     this.setState(change)
   }
-
   render() {
     if (this.props.editing === this.props.id) {
       return (
-        <div className="updateParticipant">
+        <div className="Participant">
           <form onSubmit={this.updateParticipant}>
             <input
               type="text"
@@ -72,15 +82,14 @@ class Participant extends Component {
           </form>
         </div>
       )
-    } else {
-      return (
-        <div className="Participant">
-          {this.props.name} {this.props.email} {this.props.phone}
-          <button onClick={this.toggleEditing}>edit</button>
-          <button onClick={this.removeParticipant}>remove</button>
-        </div>
-      )
     }
+    return (
+      <div className="Participant">
+        {this.props.name} {this.props.email} {this.props.phone}
+        <button onClick={this.toggleEditing}>edit</button>
+        <button onClick={this.removeParticipant}>remove</button>
+      </div>
+    )
   }
 }
 
