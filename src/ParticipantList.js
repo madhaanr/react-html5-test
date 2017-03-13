@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Table, Column, Cell } from 'fixed-data-table'
 
 import Participant from './Participant'
 import AddParticipant from './AddParticipant'
