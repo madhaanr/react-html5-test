@@ -3,8 +3,6 @@ import React, { Component } from 'react'
 import './ParticipantList.css'
 import Participant from './Participant'
 import AddParticipant from './AddParticipant'
-import EditParticipant from './EditParticipant'
-import RemoveParticipant from './RemoveParticipant'
 
 class ParticipantList extends Component {
   constructor(props) {
@@ -117,7 +115,6 @@ class ParticipantList extends Component {
       )
     })
   }
-
   render() {
     return (
       <div>
