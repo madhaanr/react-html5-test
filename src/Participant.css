@@ -23,7 +23,7 @@ DIV.td {
   vertical-align: middle;
   background-color: transparent;
   border:0;
-  margin:0 20px 0 40px;
+  margin:0 16px 0 40px;
   padding:0 0 0 10px;
   height:24px;
   width:24px;
@@ -31,7 +31,7 @@ DIV.td {
 
 DIV.buttons {
   width: 65px;
-  padding: 0 0 0 50px
+  padding: 0 0 0 60px
 }
 
 FORM.tr {
@@ -43,7 +43,7 @@ FORM.tr {
 }
 input {
   height:40px;
-  width: 190px;
+  width: 150px;
   text-align: left;
   background-color: #f1f1f1;
   color: black;
@@ -69,8 +69,10 @@ input {
 .cancelUpdate {
   vertical-align: middle;
   background-color: #ededed;
+  font-size:16px;
+  font-weight:500;
   border:0;
-  margin:0 0 0 50px;
+  margin:0 0 0 40px;
   padding:0 0 0 0;
   height:40px;
   width:70px;
