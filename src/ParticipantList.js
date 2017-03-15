@@ -34,6 +34,7 @@ class ParticipantList extends Component {
         { id: "121sfafa2", name: "Huppe Jumppeli", email: "huppe@huppeli.fi", phone: "0501234567" },
         { id: "123sffff2", name: "Arnold Swarts", email: "arnold@gov.org", phone: "0501234567" },
         { id: "12sssf2", name: "Tiralyn Doods", email: "td@ds.com", phone: "0501234567" },
+        { id: "12ss23sf2", name: "Tiralyn Doods", email: "td@ds.com", phone: "0501234567" },
       ],
       editing: '',
       order: {
@@ -75,25 +76,21 @@ class ParticipantList extends Component {
   }
   sortByColumn(e) {
     const column = e.target.id
-    const copy = this.state.participants.slice()
+    const copy = this.state.participants
     const orderCopy = this.state.order
+    const direction = orderCopy[column]
     if (copy.length === 0) {
       return
     }
-    copy.sort((a, b) => {
-      if (a[column].toLowerCase() >= b[column].toLowerCase()) {
-        return 1;
-      }
-      return -1;
-    })
-    let sum=0
-    orderCopy[column] = '\u2193'
-    for(let i = 0; i<copy.length;++i) {
-      if(copy[i].name===this.state.participants[i].name) {
-        sum++;
-      }
-    }
-    if(sum===copy.length) {
+    if (direction === '\u2191' || direction === '\u2195') {
+      copy.sort((a, b) => {
+        if (a[column].toLowerCase() > b[column].toLowerCase()) {
+          return 1;
+        }
+        return -1;
+      })
+      orderCopy[column] = '\u2193'
+    } else {
       orderCopy[column] = '\u2191'
       copy.reverse()
     }
