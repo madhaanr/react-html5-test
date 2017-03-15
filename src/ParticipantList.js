@@ -118,8 +118,6 @@ class ParticipantList extends Component {
     })
   }
 
-  // <RemoveParticipant key={p.id} id={p.id} removeParticipant={this.removeParticipant} />
-  //<button><EditParticipant participant={p}/></button>
   render() {
     return (
       <div>
