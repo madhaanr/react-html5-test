@@ -56,22 +56,23 @@ class Participant extends Component {
   render() {
     if (this.props.editing === this.props.id) {
       return (
-        <div className="Participant">
-          <form onSubmit={this.updateParticipant}>
-            <input
-              type="text"
-              name="name"
-              placeholder={this.state.name}
-              onChange={this.handleChange}
-              value={this.state.name}
-            />
+        <form className="tr" onSubmit={this.updateParticipant}>
+          <div className='formTd'><input
+            type="text"
+            name="name"
+            placeholder={this.state.name}
+            onChange={this.handleChange}
+            value={this.state.name}
+          /></div>
+          <div className='formTd'>
             <input
               type="text"
               name="email"
               placeholder={this.state.email}
               onChange={this.handleChange}
               value={this.state.email}
-            />
+            /></div>
+          <div className='formTd'>
             <input
               type="text"
               name="phone"
@@ -79,10 +80,12 @@ class Participant extends Component {
               onChange={this.handleChange}
               value={this.state.phone}
             />
-            <button onClick={this.cancelEditing}>cancel</button>
-            <input type='submit' value='Save' />
-          </form>
-        </div>
+          </div>
+          <div className='formTd'>
+            <button className='cancelUpdate' onClick={this.cancelEditing}>Cancel</button>
+            <input className='saveUpdate' type='submit' value='Save' />
+          </div>
+        </form>
       )
     }
     return (
@@ -91,8 +94,8 @@ class Participant extends Component {
         <div className='td'>{this.props.email}</div>
         <div className='td'>{this.props.phone}</div>
         <div className='td buttons'>
-          <button className='editButton'><img src={pen} alt='edit participant' onClick={this.toggleEditing}/></button>
-          <button className='removeButton'><img src={trash_can} alt='remove participant' onClick={this.removeParticipant}/></button>
+          <button className='editButton'><img src={pen} alt='edit participant' onClick={this.toggleEditing} /></button>
+          <button className='removeButton'><img src={trash_can} alt='remove participant' onClick={this.removeParticipant} /></button>
         </div>
       </div>
     )

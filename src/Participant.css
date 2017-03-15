@@ -7,22 +7,85 @@
 }
 DIV.tr {
   display: table-row;
-}
-DIV.td {
-  width:150px;
-  display: table-cell;
   white-space: nowrap;
 }
-DIV.buttons {
-  width: 65px;
-  padding: 0 0 0 50px
+DIV.td {
+  display: table-cell;
+  white-space: nowrap;
+  font-size: 16px;
+  width: 150px;
+  line-height: 24px;
+  font-weight: 400;
+  padding:24px 0 24px 24px;
 }
+
 .editButton, .removeButton {
   vertical-align: middle;
   background-color: transparent;
   border:0;
-  margin:0 20px 0 20px;
+  margin:0 20px 0 40px;
   padding:0 0 0 10px;
   height:24px;
   width:24px;
+}
+
+DIV.buttons {
+  width: 65px;
+  padding: 0 0 0 50px
+}
+
+FORM.tr {
+  display: table-row;
+  white-space: nowrap;
+  background-color:white;
+  margin-bottom: 1px;
+  
+}
+input {
+  height:40px;
+  width: 190px;
+  text-align: left;
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  border:0;
+  padding: 0 0 0 8px;
+  vertical-align: middle;
+}
+
+.formTd {
+  display: table-cell;
+  white-space: nowrap;
+  font-size: 16px;
+  width: 150px;
+  line-height: 24px;
+  font-weight: 400;
+  padding:16px 0 16px 16px;
+  
+}
+
+.cancelUpdate {
+  vertical-align: middle;
+  background-color: #ededed;
+  border:0;
+  margin:0 0 0 50px;
+  padding:0 0 0 0;
+  height:40px;
+  width:70px;
+  float: center;
+  vertical-align: middle;
+  color: #07f;
+}
+.saveUpdate {
+  margin: 0 0 0 10px;
+  height: 40px;
+  font-size:16px;
+  font-weight:500;
+  width: 60px;
+  color: #ffffff;
+  float: center;
+  background-color: #07f;
+  vertical-align: middle;
 }
