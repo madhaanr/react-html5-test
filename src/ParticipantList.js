@@ -15,10 +15,25 @@ class ParticipantList extends Component {
     this.sortByColumn = this.sortByColumn.bind(this)
     this.state = {
       participants: [
-        { id: "12sfs", name: "Meet", email: "meet@a.com", phone: "0507654327" },
-        { id: "12sf3", name: "Euvu", email: "euvu@a.com", phone: "0509889444" },
-        { id: "12sf2", name: "Mers", email: "mers@a.com", phone: "0501234567" },
-        { id: "12fgs", name: "Emsa", email: "emsa@a.com", phone: "0501239567" }
+        { id: "12sfs", name: "Gero Nimo", email: "Geronimo@a.com", phone: "0507654327" },
+        { id: "12sf3", name: "Eric Von Lustbaders", email: "evl@b.com", phone: "0509889444" },
+        { id: "12sf2", name: "Steven Collins", email: "steve@ds.com", phone: "0501234567" },
+        { id: "12fgs", name: "Ronald MacRonald", email: "ronald2012@gmail.com", phone: "0501239567" },
+        { id: "12sf223", name: "Steven Coll", email: "stevec@ads.com", phone: "0201234567" },
+        { id: "12sf23z2", name: "Jermy Monford", email: "jermy@gmail.com", phone: "0401234567" },
+        { id: "12sfss2", name: "Palo Alto", email: "pa@abcd.com", phone: "050123567" },
+        { id: "1s2sfd2", name: "Gerald Told", email: "gerry@gmail.com", phone: "0501234567" },
+        { id: "12sfasda2", name: "Great Appelson", email: "great232312@gmail.com", phone: "0501234567" },
+        { id: "12sf223423", name: "Steve Collins", email: "stevecc@gmail.com", phone: "0501234567" },
+        { id: "12sfffssdf2", name: "Hemmi Hemmonen", email: "hemmi@gmail.com", phone: "0501234567" },
+        { id: "12sfwerew2", name: "Ernest Young", email: "erny@ds.com", phone: "0801234567" },
+        { id: "12sf2322", name: "Vodafone India", email: "india2323@ds.com", phone: "0901234567" },
+        { id: "12sf2r2", name: "Helen Myers", email: "helen13234324@hotmail.com", phone: "0701234567" },
+        { id: "12sfggsdfs2", name: "Susan Sand", email: "susie22434@gmail.com", phone: "0301234567" },
+        { id: "125sfsfaf2", name: "Miss Time", email: "miss@time.com", phone: "0501234567" },
+        { id: "121sfafa2", name: "Huppe Jumppeli", email: "huppe@huppeli.fi", phone: "0501234567" },
+        { id: "123sffff2", name: "Arnold Swarts", email: "arnold@gov.org", phone: "0501234567" },
+        { id: "12sssf2", name: "Tiralyn Doods", email: "td@ds.com", phone: "0501234567" },
       ],
       editing: '',
       order: {
@@ -60,21 +75,25 @@ class ParticipantList extends Component {
   }
   sortByColumn(e) {
     const column = e.target.id
-    const copy = this.state.participants
+    const copy = this.state.participants.slice()
     const orderCopy = this.state.order
-    let wasInOrder = 0
     if (copy.length === 0) {
       return
     }
     copy.sort((a, b) => {
       if (a[column].toLowerCase() >= b[column].toLowerCase()) {
-        wasInOrder++;
         return 1;
       }
       return -1;
     })
+    let sum=0
     orderCopy[column] = '\u2193'
-    if (wasInOrder === 0) {
+    for(let i = 0; i<copy.length;++i) {
+      if(copy[i].name===this.state.participants[i].name) {
+        sum++;
+      }
+    }
+    if(sum===copy.length) {
       orderCopy[column] = '\u2191'
       copy.reverse()
     }

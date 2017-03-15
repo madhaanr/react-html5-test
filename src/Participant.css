@@ -31,19 +31,18 @@ DIV.td {
 
 DIV.buttons {
   width: 65px;
-  padding: 0 0 0 60px
+  padding: 0 0 0 50px
 }
 
 FORM.tr {
   display: table-row;
   white-space: nowrap;
   background-color:white;
-  margin-bottom: 1px;
-  
+  border-bottom: 1px solid #DCDCDC
 }
 input {
   height:40px;
-  width: 150px;
+  width: 140px;
   text-align: left;
   background-color: #f1f1f1;
   color: black;
@@ -72,7 +71,7 @@ input {
   font-size:16px;
   font-weight:500;
   border:0;
-  margin:0 0 0 40px;
+  margin:0 0 0 50px;
   padding:0 0 0 0;
   height:40px;
   width:70px;
