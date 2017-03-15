@@ -90,7 +90,7 @@ class Participant extends Component {
         <div className='td'>{this.props.name}</div>
         <div className='td'>{this.props.email}</div>
         <div className='td'>{this.props.phone}</div>
-        <div className='td'>
+        <div className='td buttons'>
           <button className='editButton'><img src={pen} alt='edit participant' onClick={this.toggleEditing}/></button>
           <button className='removeButton'><img src={trash_can} alt='remove participant' onClick={this.removeParticipant}/></button>
         </div>

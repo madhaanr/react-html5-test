@@ -14,7 +14,7 @@ class ParticipantList extends Component {
     this.toggleEditing = this.toggleEditing.bind(this)
     this.cancelEditing = this.cancelEditing.bind(this)
     this.updateParticipant = this.updateParticipant.bind(this)
-    this.sortByName = this.sortByName.bind(this)
+    this.sortByColumn = this.sortByColumn.bind(this)
     this.state = {
       participants: [
         { id: "12sfs", name: "Meet", email: "meet@a.com", phone: "0507654327" },
@@ -23,9 +23,11 @@ class ParticipantList extends Component {
         { id: "12fgs", name: "Emsa", email: "emsa@a.com", phone: "0501239567" }
       ],
       editing: '',
-      nameOrder: '\u2195',
-      emailOrder: '\u2195',
-      phoneOrder: '\u2195'
+      order: {
+        name: '\u2195',
+        email: '\u2195',
+        phone: '\u2195'
+      }
     }
   }
 
@@ -58,25 +60,32 @@ class ParticipantList extends Component {
     participants[index] = participant
     this.setState({ participants: participants, editing: '' })
   }
-  sortByName() {
-    if (this.state.participants.length === 0) {
+  sortByColumn(e) {
+    const column = e.target.id
+    const copy = this.state.participants
+    const orderCopy = this.state.order
+    let wasInOrder = 0
+    if (copy.length === 0) {
       return
     }
-    const copy = this.state.participants
-    let wasInOrder = 0
     copy.sort((a, b) => {
-      if (a.name.toLowerCase() >= b.name.toLowerCase()) {
+      if (a[column].toLowerCase() >= b[column].toLowerCase()) {
         wasInOrder++;
         return 1;
       }
       return -1;
     })
-    let order = '\u2193'
+    orderCopy[column] = '\u2193'
     if (wasInOrder === 0) {
-      order = '\u2191'
+      orderCopy[column] = '\u2191'
       copy.reverse()
     }
-    this.setState({ participants: copy, nameOrder: order });
+    for (const item in orderCopy) {
+      if (item !== column) {
+        orderCopy[item] = '\u2195'
+      }
+    }
+    this.setState({ participants: copy, order: orderCopy });
   }
 
   renderParticipants() {
@@ -114,15 +123,15 @@ class ParticipantList extends Component {
   render() {
     return (
       <div>
-        <div className="AddParticipant">
+        <div className='AddParticipant'>
           <AddParticipant addParticipant={this.addParticipant} />
         </div>
-        <div className="table ParticipantList">
-          <div className="tr tableHeader">
-            <div onClick={this.sortByName} className="th">Name &nbsp;{this.state.nameOrder}</div>
-            <div className="th">E-mail address</div>
-            <div className="th">Phone number</div>
-            <div className="th">
+        <div className='table ParticipantList'>
+          <div className='tr tableHeader'>
+            <div id='name' onClick={this.sortByColumn} className='th'>Name &nbsp;{this.state.order.name}</div>
+            <div id='email' onClick={this.sortByColumn} className='th'>E-mail address &nbsp;{this.state.order.email}</div>
+            <div id='phone' onClick={this.sortByColumn} className='th'>Phone number &nbsp;{this.state.order.phone}</div>
+            <div className='th'>
             </div>
           </div>
           {this.renderParticipants()}

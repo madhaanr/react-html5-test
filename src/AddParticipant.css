@@ -7,7 +7,7 @@
 .addInput {
   margin: 16px 0 16px 16px;
   height:40px;
-  width: 210px;
+  width: 205px;
   text-align: left;
   background-color: #f1f1f1;
   color: black;
@@ -16,12 +16,17 @@
   font-weight: 400;
   padding: 0 0 0 5px;
   border:0;
+  vertical-align: middle;
 }
 
 div .addSubmit {
-  background-color: transparent;
-  border: 1;
+  margin: 16px 0 16px 70px;
+  border: 0;
   height: 40px;
+  font-size:16px;
+  width: 120px;
   color: #909090;
   float: center;
+  background-color: #ededed;
+  vertical-align: middle;
 }

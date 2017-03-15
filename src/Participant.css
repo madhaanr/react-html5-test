@@ -13,13 +13,16 @@ DIV.td {
   display: table-cell;
   white-space: nowrap;
 }
+DIV.buttons {
+  width: 65px;
+  padding: 0 0 0 50px
+}
 .editButton, .removeButton {
   vertical-align: middle;
   background-color: transparent;
   border:0;
-  margin:0;
-  padding:0 0 0 60px;
+  margin:0 20px 0 20px;
+  padding:0 0 0 10px;
   height:24px;
   width:24px;
-  text-align: right;
 }
