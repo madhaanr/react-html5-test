@@ -15,7 +15,8 @@
 }
 
 .App-list-body {
-  width: 912px;
+  max-width: 912px;
+  min-width: 912px;
   margin: 0 0 0 32px;
 }
 

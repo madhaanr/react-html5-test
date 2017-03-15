@@ -13,7 +13,8 @@ DIV.td {
   display: table-cell;
   white-space: nowrap;
   font-size: 16px;
-  width: 150px;
+  width:150px;
+  max-width: 150px;
   line-height: 24px;
   font-weight: 400;
   padding:24px 0 24px 24px;
@@ -59,6 +60,8 @@ input {
   white-space: nowrap;
   font-size: 16px;
   width: 150px;
+  max-width:150px;
+  min-width:150px;
   line-height: 24px;
   font-weight: 400;
   padding:16px 0 16px 16px;
