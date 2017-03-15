@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import './Participant.css'
+import trash_can from '../public/trash_can.png'
+import pen from '../public/pen.png'
 
 class Participant extends Component {
   constructor(props) {
@@ -78,16 +80,20 @@ class Participant extends Component {
               value={this.state.phone}
             />
             <button onClick={this.cancelEditing}>cancel</button>
-            <input type="submit" value="Save" />
+            <input type='submit' value='Save' />
           </form>
         </div>
       )
     }
     return (
-      <div className="Participant">
-        {this.props.name} {this.props.email} {this.props.phone}
-        <button onClick={this.toggleEditing}>edit</button>
-        <button onClick={this.removeParticipant}>remove</button>
+      <div className='tr Participant'>
+        <div className='td'>{this.props.name}</div>
+        <div className='td'>{this.props.email}</div>
+        <div className='td'>{this.props.phone}</div>
+        <div className='td'>
+          <button className='editButton'><img src={pen} alt='edit participant' onClick={this.toggleEditing}/></button>
+          <button className='removeButton'><img src={trash_can} alt='remove participant' onClick={this.removeParticipant}/></button>
+        </div>
       </div>
     )
   }

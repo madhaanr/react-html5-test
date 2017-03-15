@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './AddParticipant.css'
+
 class AddParticipant extends Component {
   constructor(props) {
     super(props)
@@ -32,9 +34,9 @@ class AddParticipant extends Component {
   }
   render() {
     return (
-      <div className="AddParticipant">
-        <form onSubmit={this.addParticipant}>
-          <input
+      <div className="addParticipant">
+        <form className='addForm' onSubmit={this.addParticipant}>
+          <input className='addInput'
             type="text"
             name="name"
             placeholder="Full name"
@@ -42,7 +44,7 @@ class AddParticipant extends Component {
             value={this.state.name}
             required
           />
-          <input
+          <input className='addInput'
             type="email"
             name="email"
             placeholder="E-mail address"
@@ -50,7 +52,7 @@ class AddParticipant extends Component {
             value={this.state.email}
             required
           />
-          <input
+          <input className='addInput'
             type="tel"
             name="phone"
             placeholder="Phone number"
@@ -58,7 +60,7 @@ class AddParticipant extends Component {
             value={this.state.phone}
             required
           />
-          <input type="submit" value="Add new" />
+          <input className='addSubmit' type="submit" value="Add new" />
         </form>
       </div>
     )
